@@ -10,6 +10,10 @@ public class c_player : MonoBehaviour
     public Animator g_player_animator;
     public Rigidbody2D g_player_rbody;
 
+    public GameObject g_camera;
+
+    
+
     void m_player_behaviour()
     {
         if(Input.GetKey(KeyCode.A))
@@ -17,12 +21,16 @@ public class c_player : MonoBehaviour
             this.transform.localScale = new Vector3(-1, 1, 1);
             this.transform.Translate(Vector2.left * g_player_moveSpeed * Time.deltaTime);
 
+            
+
             m_animation_switch(1);
         }
         if (Input.GetKey(KeyCode.D))
         {
             this.transform.localScale = new Vector3(1, 1, 1);
             this.transform.Translate(Vector2.right * g_player_moveSpeed * Time.deltaTime);
+
+            
 
             m_animation_switch(1);
         }
@@ -89,6 +97,11 @@ public class c_player : MonoBehaviour
         }
     }
 
+    void m_camera_movement()
+    {
+        //if(this.transform.position.x < -2)
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +111,8 @@ public class c_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(g_player_isGrounded);
+        print(this.transform.position.x);
+        
         m_player_behaviour();
     }
 }
